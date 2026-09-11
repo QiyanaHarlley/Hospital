@@ -22,6 +22,13 @@ programa
 		escreva("Idade: ", idade, " anos\n")
 		escreva("Temperatura: ", temperatura, "°C\n")
 
+		// Chamada da nova função enviando a idade e a temperatura como parâmetros
+		classificarAtendimento(idade, temperatura)
+	}
+
+	// Nova função responsável exclusivamente pela verificação do status
+	funcao classificarAtendimento(inteiro idade, real temperatura)
+	{
 		se (temperatura >= 39.0 ou idade >= 60)
 		{
 			escreva("Status: ATENDIMENTO PRIORITÁRIO\n")
