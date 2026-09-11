@@ -22,14 +22,17 @@ programa
 		escreva("Idade: ", idade, " anos\n")
 		escreva("Temperatura: ", temperatura, "°C\n")
 
-		// Chamada da nova função para avaliar a febre
+		// Chamada da função para avaliar a febre
 		classificarFebre(temperatura)
 
-		// Chamada da função enviando a idade e a temperatura como parâmetros
+		// Chamada da função para classificar a prioridade
 		classificarAtendimento(idade, temperatura)
+
+		// Chamada da NOVA FUNÇÃO para estimar o tempo de espera
+		estimarTempoEspera(idade, temperatura)
 	}
 
-	// Nova função responsável por detalhar a condição térmica do paciente
+	// Função responsável por detalhar a condição térmica do paciente
 	funcao classificarFebre(real temperatura)
 	{
 		se (temperatura < 35.5)
@@ -50,7 +53,7 @@ programa
 		}
 	}
 
-	// Função responsável exclusivamente pela verificação do status de prioridade
+	// Função responsável pela verificação do status de prioridade
 	funcao classificarAtendimento(inteiro idade, real temperatura)
 	{
 		se (temperatura >= 39.0 ou idade >= 60)
@@ -62,6 +65,33 @@ programa
 		{
 			escreva("Status: ATENDIMENTO REGULAR\n")
 			escreva("Orientação: Aguardar chamada na recepção.\n")
+		}
+	}
+
+	// NOVA FUNÇÃO: Calcula o tempo estimado de espera de acordo com o risco
+	funcao estimarTempoEspera(inteiro idade, real temperatura)
+	{
+		escreva("--- ESTIMATIVA DE ATENDIMENTO ---\n")
+		
+		// Casos graves / Prioridade Alta
+		se (temperatura >= 39.0 ou temperatura < 35.5)
+		{
+			escreva("Tempo Estimado: Atendimento Imadiato (0 a 10 minutos)\n")
+		}
+		// Idosos sem febre alta
+		senao se (idade >= 60)
+		{
+			escreva("Tempo Estimado: Até 30 minutos\n")
+		}
+		// Casos com febre moderada
+		senao se (temperatura >= 37.8)
+		{
+			escreva("Tempo Estimado: Até 60 minutos\n")
+		}
+		// Casos comuns
+		senao
+		{
+			escreva("Tempo Estimado: Até 120 minutos (2 horas)\n")
 		}
 	}
 }
